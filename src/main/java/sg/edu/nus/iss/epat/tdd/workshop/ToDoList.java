@@ -1,31 +1,30 @@
 package sg.edu.nus.iss.epat.tdd.workshop;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class ToDoList {
    private HashMap<String, Task> tasks = new HashMap<String, Task>();
 
    public void addTask(Task task) {
-      // Add code here
+      tasks.put(task.getDescription(), task);
    }
 
    public void completeTask(String description) {
-      // Add code here
+      Task t = tasks.get(description);
+      t.setComplete(true);
    }
 
    public boolean getStatus(String description) {
-      // Add code here
-      return false;
+      return getTask(description).isComplete();
    }
 
    public Task getTask(String description) {
-      // Add code here
-      return null;
+      return tasks.get(description);
    }
 
    public Task removeTask(String description) {
-      // Add code here
-      return null;
+      return tasks.remove(description);
    }
 
    public Collection<Task> getAllTasks() {
@@ -33,7 +32,13 @@ public class ToDoList {
    }
 
    public Collection<Task> getCompletedTasks() {
-      // Add code here
-      return null;
+      Collection<Task> res = new ArrayList();
+
+      for (Task task : tasks.values()) {
+         if(task.isComplete()) {
+            res.add(task);
+         }
+      }
+      return res;
    }
 }

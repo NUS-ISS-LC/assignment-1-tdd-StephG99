@@ -28,5 +28,4 @@ public class Task {
    public void setComplete(boolean isComplete) {
       this.isComplete = isComplete;
    }
-
 }
